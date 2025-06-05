@@ -11,4 +11,6 @@ add_subdirectory(ColorConvertModule)
 add_subdirectory(ConfigModule)
 add_subdirectory(LogModule)
 add_subdirectory(RingBufferModule)
+add_subdirectory(CastSenderCore)
 add_subdirectory(WirelessScreenCastApplication)
+

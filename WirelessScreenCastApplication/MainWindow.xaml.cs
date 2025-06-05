@@ -18,7 +18,7 @@ namespace WirelessScreenCastApplication
     {
         public MainWindow()
         {
-            //InitializeComponent();
+            NativeCastSenderCore.Init();
         }
     }
 }

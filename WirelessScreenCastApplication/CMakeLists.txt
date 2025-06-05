@@ -33,10 +33,10 @@ set_target_properties(WirelessScreenCastApplication PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
 )
 
-add_dependencies(WirelessScreenCastApplication ScreenCaptureModule)
+add_dependencies(WirelessScreenCastApplication CastSenderCore)
 
 add_custom_command(TARGET WirelessScreenCastApplication POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "$<TARGET_FILE:ScreenCaptureModule>"
+    "$<TARGET_FILE:CastSenderCore>"
     "$<TARGET_FILE_DIR:WirelessScreenCastApplication>"
 )
