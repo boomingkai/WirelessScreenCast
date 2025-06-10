@@ -35,8 +35,29 @@ set_target_properties(WirelessScreenCastApplication PROPERTIES
 
 add_dependencies(WirelessScreenCastApplication CastSenderCore)
 
-add_custom_command(TARGET WirelessScreenCastApplication POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "$<TARGET_FILE:CastSenderCore>"
-    "$<TARGET_FILE_DIR:WirelessScreenCastApplication>"
-)
+set(FFMPEG_BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/ffmpeg-7.1.1-install/bin")
+set(X264_BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/x264-install/bin")
+# 查找 .dll 文件
+file(GLOB FFMPEG_DLLS "${FFMPEG_BIN_DIR}/*.dll")
+file(GLOB X264_DLLS "${X264_BIN_DIR}/*.dll")
+
+# 设置目标目录
+set(TARGET_BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../Build/bin/Debug")
+
+# 添加复制 FFMPEG DLL 的命令
+foreach(dll ${FFMPEG_DLLS})
+    add_custom_command(TARGET WirelessScreenCastApplication POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${dll}"
+        "${TARGET_BIN_DIR}/"
+    )
+endforeach()
+
+# 添加复制 X264 DLL 的命令
+foreach(dll ${X264_DLLS})
+    add_custom_command(TARGET WirelessScreenCastApplication POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${dll}"
+        "${TARGET_BIN_DIR}/"
+    )
+endforeach()

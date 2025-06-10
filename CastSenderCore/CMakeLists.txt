@@ -10,8 +10,15 @@ file(GLOB_RECURSE SRC_FILES
 
 add_library(CastSenderCore SHARED ${SRC_FILES})
 
-link_directories("${CMAKE_SOURCE_DIR}../Build/lib/Debug")  # 添加库搜索路径
+link_directories("${CMAKE_SOURCE_DIR}/Build/lib/Debug")  # 添加库搜索路径
 target_link_libraries(CastSenderCore PRIVATE LogModule)  # 链接具体库
+
+set(FFMPEG_LIB_DIR "${CMAKE_SOURCE_DIR}/ThirdParty/ffmpeg-7.1.1-install/lib")
+target_link_directories(CastSenderCore PRIVATE ${FFMPEG_LIB_DIR})
+# 显式链接FFMpeg库
+target_link_libraries(CastSenderCore PRIVATE
+  avcodec avformat avutil swresample swscale avdevice postproc
+)
 
 # 输出 DLL 到统一 bin 目录
 set_target_properties(CastSenderCore PROPERTIES 
@@ -21,3 +28,6 @@ set_target_properties(CastSenderCore PROPERTIES
 )
 
 add_dependencies(CastSenderCore LogModule)
+
+set(FFMPEG_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/ffmpeg-7.1.1-install/include")
+target_include_directories(CastSenderCore PRIVATE ${FFMPEG_INCLUDE_DIR})

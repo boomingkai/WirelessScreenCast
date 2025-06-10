@@ -1,0 +1,14 @@
+prefix=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install
+exec_prefix=${prefix}
+libdir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/lib
+includedir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 61.19.101
+Requires: 
+Requires.private: libswresample >= 5.3.100, libavutil >= 59.39.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -liconv -lm -latomic -llzma -LE:/MyProject/FFMpeg/x264-install/lib -lx264 -lmfuuid -lole32 -lstrmiids -lole32 -luser32 -lz
+Cflags: -I${includedir}

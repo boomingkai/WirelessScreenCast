@@ -1,0 +1,14 @@
+prefix=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install
+exec_prefix=${prefix}
+libdir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/lib
+includedir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 61.7.100
+Requires: 
+Requires.private: libavcodec >= 61.19.101, libswresample >= 5.3.100, libavutil >= 59.39.100
+Conflicts:
+Libs: -L${libdir}  -lavformat 
+Libs.private: -lm -latomic -lbz2 -lz -lsecur32 -lws2_32
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install
+exec_prefix=${prefix}
+libdir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/lib
+includedir=/e/MyProject/FFMpeg/ffmpeg-7.1.1-install/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 59.39.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -lm -luser32 -lbcrypt -latomic
+Cflags: -I${includedir}
