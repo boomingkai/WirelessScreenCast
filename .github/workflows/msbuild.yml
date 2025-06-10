@@ -40,4 +40,4 @@ jobs:
       run: nuget restore .\.\Build\WirelessScreenCastSolution.sln
 
     - name: Build solution
-      run: msbuild .\.\Build\WirelessScreenCastSolution.sln /p:Configuration=Release
+      run: msbuild .\.\Build\WirelessScreenCastSolution.sln /p:Configuration=Debug
