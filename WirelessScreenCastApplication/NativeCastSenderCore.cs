@@ -10,9 +10,12 @@ namespace WirelessScreenCastApplication
     internal class NativeCastSenderCore
     {
         [DllImport("CASTSENDERCORE.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool Init();
+        public static extern void Init();
 
         [DllImport("CASTSENDERCORE.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool UnInit();
+        public static extern void StartCast();
+
+        [DllImport("CASTSENDERCORE.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ShutDownCast();
     }
 }

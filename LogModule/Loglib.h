@@ -1,13 +1,15 @@
 #pragma once
 
-#ifdef LOGLIB_EXPORTS
+
+#ifdef LogModule_EXPORTS
 #define LOGLIB_API __declspec(dllexport)
 #else
 #define LOGLIB_API __declspec(dllimport)
 #endif
 
-extern "C" {
+#include <string>
 
+extern "C" {
     enum LogLevel
     {
         LOG_INFO,
@@ -17,7 +19,7 @@ extern "C" {
 
     LOGLIB_API bool InitLogger(const char* logFilePath);
 
-    LOGLIB_API void LogMessage(LogLevel level, const char* message);
+    LOGLIB_API void LogMessage(LogLevel level, const std::string& message);
 
     LOGLIB_API void ShutdownLogger();
 }

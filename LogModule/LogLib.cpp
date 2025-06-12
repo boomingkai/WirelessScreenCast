@@ -8,7 +8,7 @@ bool InitLogger(const char* logFilePath)
     return g_logger.Init(logFilePath);
 }
 
-void LogMessage(LogLevel level, const char* message)
+void LogMessage(LogLevel level, const std::string& message)
 {
     g_logger.Log(static_cast<int>(level), message);
 }

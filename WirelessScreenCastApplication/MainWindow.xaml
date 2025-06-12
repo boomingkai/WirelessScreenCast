@@ -5,7 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WirelessScreenCastApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Green">
+        Title="MainWindow" Height="450" Width="800" BorderThickness="10">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="4" Grid.Column="0" Content="Start" FontSize="50" Click="Start_Button_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Stop" FontSize="50" Click="Stop_Button_Click"/>
+
     </Grid>
 </Window>

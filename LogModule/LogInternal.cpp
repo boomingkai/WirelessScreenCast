@@ -61,7 +61,7 @@ void Logger::PrintToConsole(int level, const std::string& msg)
 
     switch (level)
     {                       
-        case 0: color = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE; break; // White (INFO)
+        case 0: color = FOREGROUND_GREEN; break; // White (INFO)
         case 1: color = FOREGROUND_RED | FOREGROUND_GREEN; break; // Yellow (WARN)
         case 2: color = FOREGROUND_RED; break; // Red (ERROR)
     }

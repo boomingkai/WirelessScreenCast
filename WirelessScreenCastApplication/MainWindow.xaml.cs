@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,15 @@ namespace WirelessScreenCastApplication
         public MainWindow()
         {
             NativeCastSenderCore.Init();
+        }
+
+        private async void Start_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NativeCastSenderCore.StartCast();
+        }
+        private void Stop_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NativeCastSenderCore.ShutDownCast();
         }
     }
 }
