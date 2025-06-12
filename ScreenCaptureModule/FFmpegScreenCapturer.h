@@ -18,6 +18,7 @@ public:
 
 private:
     void GetFrameData(FrameCallback cb);
+    bool SetCapturerPara();
 private:
     AVFormatContext* m_fmt_ctx = nullptr;
     AVDictionary* m_options = nullptr;
