@@ -49,7 +49,7 @@ bool FFmpegScreenCapturer::SetCapturerPara()
     }
 
     // set fps
-    av_dict_set(&m_options, "framerate", "30", 0);
+    av_dict_set(&m_options, "framerate", std::to_string(k_frame_rate).c_str(), 0);
     // set capture resolution
     av_dict_set(&m_options, "video_size", "2560x1440", 0);
 
