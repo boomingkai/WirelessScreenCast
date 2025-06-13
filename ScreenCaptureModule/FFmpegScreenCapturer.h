@@ -12,9 +12,9 @@ class FFmpegScreenCapturer : public IScreenCapturer
 public:
     FFmpegScreenCapturer() = default;
     ~FFmpegScreenCapturer() = default;
-    virtual void Init(int displayIndex);
-    virtual void Start(FrameCallback cb);
-    virtual void ShutDown();
+    virtual bool Init(int displayIndex);
+    virtual bool Start(FrameCallback cb);
+    virtual bool ShutDown();
 
 private:
     void GetFrameData(FrameCallback cb);

@@ -9,7 +9,7 @@
 #include "ScreenCaptureCommon.h"
 extern "C"
 {
-    SC_API void InitSC(int displayIndex = 0);
-    SC_API void ShutDownSC();
-    SC_API void StartCapture(FrameCallback cb);
+    SC_API bool InitSC(int displayIndex = 0);
+    SC_API bool ShutDownSC();
+    SC_API bool StartCapture(FrameCallback cb);
 }

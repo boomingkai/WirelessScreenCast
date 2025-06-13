@@ -2,15 +2,19 @@
 #include "LogModule/Loglib.h"
 #include "ScreenCaptureModule/ScreenCapture.h"
 #include <fstream>
+#include <sstream>
 
 void Init()
 {
-    InitLogger("../../log.txt");
-    LogMessage(LOG_INFO, "Init logger complete");
-
-    InitSC(0);
-    LogMessage(LOG_INFO, "Init screen capture complete");
-
+    if (InitLogger("../../log.txt"))
+    {
+        LogMessage(LOG_INFO, "Init logger complete. 1/2");
+    }
+    
+     if (InitSC(0))
+     {
+         LogMessage(LOG_INFO, "Init screen capture complete. 2/2");
+     }
 }
 
 void StartCast()

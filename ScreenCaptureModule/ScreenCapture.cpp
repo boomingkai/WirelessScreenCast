@@ -2,20 +2,20 @@
 #include "ScreenCapturerFactory.h"
 
 static IScreenCapturer* SC_Instance;
-void InitSC(int displayIndex)
+bool InitSC(int displayIndex)
 {
     SC_Instance = ScreemCaptureFactory::GetScreenCaptureInstance();
-    SC_Instance->Init(displayIndex);
+    return SC_Instance->Init(displayIndex);
 }
 
-void ShutDownSC()
+bool ShutDownSC()
 {
-    SC_Instance->ShutDown();
+    return SC_Instance->ShutDown();
 }
 
-void StartCapture(FrameCallback cb)
+bool StartCapture(FrameCallback cb)
 {
-    SC_Instance->Start(cb);
+    return SC_Instance->Start(cb);
 }
 
 

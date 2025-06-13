@@ -13,27 +13,20 @@ extern "C" {
 #include <thread>
 #include "LogModule/Loglib.h"
 
-void FFmpegScreenCapturer::Init(int displayIndex)
+bool FFmpegScreenCapturer::Init(int displayIndex)
 {
     avdevice_register_all();
-
-    LogMessage(LOG_INFO, "ffmpeg init success");
-    
+    return true;
 }
 
-void FFmpegScreenCapturer::Start(FrameCallback cb)
+bool FFmpegScreenCapturer::Start(FrameCallback cb)
 {
-    if (m_is_running)
+    if (m_is_running || !SetCapturerPara())
     {
-        return;
+        return false;
     }
 
     m_is_running = true;
-
-    if (!SetCapturerPara())
-    {
-        return;
-    }
 
     m_screen_capture_thread = std::thread([this, cb = std::move(cb)]()
     {
@@ -42,6 +35,7 @@ void FFmpegScreenCapturer::Start(FrameCallback cb)
             std::this_thread::sleep_for(std::chrono::milliseconds(33)); // 30fps
         }
     });
+    return true;
 }
 
 bool FFmpegScreenCapturer::SetCapturerPara()
@@ -106,11 +100,11 @@ void FFmpegScreenCapturer::GetFrameData(FrameCallback cb)
     av_packet_unref(&pkt);
 }
 
-void FFmpegScreenCapturer::ShutDown()
+bool FFmpegScreenCapturer::ShutDown()
 {
     if (!m_is_running)
     {
-        return;
+        return false;
     }
 
     m_is_running = false;
@@ -126,4 +120,5 @@ void FFmpegScreenCapturer::ShutDown()
     m_options = nullptr;
     m_video_stream_index = -1;
     LogMessage(LOG_INFO, "Screen Capture thread exited");
+    return true;
 }

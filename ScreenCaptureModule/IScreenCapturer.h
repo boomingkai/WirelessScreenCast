@@ -5,7 +5,7 @@
 class IScreenCapturer {
 public:
     virtual ~IScreenCapturer() = default;
-    virtual void Init(int displayIndex) = 0;
-    virtual void Start(FrameCallback cb) = 0;
-    virtual void ShutDown() = 0;
+    virtual bool Init(int displayIndex) = 0;
+    virtual bool Start(FrameCallback cb) = 0;
+    virtual bool ShutDown() = 0;
 };
